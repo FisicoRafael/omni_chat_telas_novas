@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:omni_chat_telas_novas/constants_cores.dart';
+import 'package:omni_chat_telas_novas/constants_textos.dart';
 import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: corBranca,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -22,13 +23,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
+                // ignore: sized_box_for_whitespace
                 Container(
                   child: Image.asset('images/logo.png'),
                   height: 60.0,
                 ),
-                const Text(
-                  'Seja Bem Vindo',
-                  style: TextStyle(
+                Text(
+                  StringsDoApp.textosEN["welcomeText"],
+                  style: const TextStyle(
                     fontSize: 26.0,
                     fontWeight: FontWeight.w900,
                   ),
@@ -39,20 +41,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: 48.0,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.lightBlueAccent,
+                color: corlightBluerAcent,
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
                   },
                   minWidth: 200.0,
                   height: 42.0,
-                  child: const Text(
-                    'Log In',
+                  child:  Text(
+                    StringsDoApp.textosEN["LoginButton"],
                   ),
                 ),
               ),
@@ -60,18 +64,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.blueAccent,
+                color: corBlueAcent,
                 borderRadius: BorderRadius.circular(30.0),
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const LoginScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
                   },
                   minWidth: 200.0,
                   height: 42.0,
-                  child: const Text(
-                    'Register',
+                  child: Text(
+                    StringsDoApp.textosEN["WelcomeRegister"],
                   ),
                 ),
               ),
