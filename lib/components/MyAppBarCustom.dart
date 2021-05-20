@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+
+
 import 'package:flutter/material.dart';
 
 import 'FotoUsuario.dart';
@@ -14,7 +15,7 @@ class MyAppBarCuston extends StatelessWidget implements PreferredSizeWidget {
     this.alturaTela,
     this.alturaAppStatus,
     this.alturaAppBar, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

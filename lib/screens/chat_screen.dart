@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:omni_chat_telas/components/BotoesBaixo.dart';
-import 'package:omni_chat_telas/components/FotoUsuario.dart';
-import 'package:omni_chat_telas/components/MyAppBarCustom.dart';
-import 'package:omni_chat_telas/components/balaozinhos.dart';
-import 'package:omni_chat_telas/components/conversasChat.dart';
-import 'package:omni_chat_telas/screens/ramal_screen.dart';
+import 'package:omni_chat_telas_novas/components/BotoesBaixo.dart';
+import 'package:omni_chat_telas_novas/components/FotoUsuario.dart';
+import 'package:omni_chat_telas_novas/components/MyAppBarCustom.dart';
+import 'package:omni_chat_telas_novas/components/balaozinhos.dart';
+import 'package:omni_chat_telas_novas/components/conversasChat.dart';
+
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -13,8 +13,8 @@ class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
 }
 
-double larguraTelaGlobal;
-double alturaTelaGlobal;
+double larguraTelaGlobal = 0.0;
+double alturaTelaGlobal = 0.0;
 
 class _ChatScreenState extends State<ChatScreen> {
   @override
@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Stack(
                   children: <Widget>[
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('images/bg_chat.png'),
                               fit: BoxFit.cover)),
@@ -73,20 +73,20 @@ class _ChatScreenState extends State<ChatScreen> {
                           )),
                     )),
                     IconButton(
-                      icon: Icon(Icons.tag_faces, color: Colors.orange),
+                      icon: const Icon(Icons.tag_faces, color: Colors.orange),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.attach_file, color: Colors.orange),
+                      icon: const Icon(Icons.attach_file, color: Colors.orange),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.subdirectory_arrow_left_rounded,
+                      icon: const Icon(Icons.subdirectory_arrow_left_rounded,
                           color: Colors.orange),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.mic, color: Colors.orange),
+                      icon: const Icon(Icons.mic, color: Colors.orange),
                       onPressed: () {},
                     ),
                   ])),
@@ -97,7 +97,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: <Widget>[
                     ItemBotaoBaixo(alturaTela, Colors.white, Icons.group_add),
                     ItemBotaoBaixo(alturaTela, Colors.white, Icons.people),
-                    Expanded(
+                    const Expanded(
                         child: SizedBox(
                       width: 50,
                     )),
@@ -121,16 +121,16 @@ class _ChatScreenState extends State<ChatScreen> {
   ];
 
   Widget _chatPersonalisado(BuildContext context, int index) {
-    final double r = 3.5;
+    const double r = 3.5;
     if (mensagens[index].messageType == "enviado") {
       return ListTile(
         title: ClipPath(
           clipper: ClipRThread(r),
           child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(r)),
+            borderRadius: const BorderRadius.all(Radius.circular(r)),
             child: Container(
               //constraints: BoxConstraints.loose(MediaQuery.of(context).size * 0.8),
-              padding: EdgeInsets.fromLTRB(8.0 + 2 * r, 8.0, 8.0, 8.0),
+              padding: const EdgeInsets.fromLTRB(8.0 + 2 * r, 8.0, 8.0, 8.0),
               color: Colors.white,
               //padding: EdgeInsets.all(10),
               child: Text(
@@ -147,16 +147,16 @@ class _ChatScreenState extends State<ChatScreen> {
         title: ClipPath(
           clipper: ClipRThread(r),
           child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(r)),
+            borderRadius: BorderRadius.all(const Radius.circular(r)),
             child: Container(
               //constraints: BoxConstraints.loose(MediaQuery.of(context).size * 0.8),
-              padding: EdgeInsets.fromLTRB(8.0 + 2 * r, 8.0, 8.0, 8.0),
+              padding: const EdgeInsets.fromLTRB(8.0 + 2 * r, 8.0, 8.0, 8.0),
               color: Colors.greenAccent,
               //padding: EdgeInsets.all(10),
               child: Text(
                 mensagens[index].messageContent,
                 softWrap: true,
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               ),
             ),
           ),
@@ -168,7 +168,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget _caixaUsuario() {
     return ClipRRect(
       child: Container(
-        padding: EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.only(bottom: 8),
         decoration: BoxDecoration(
             color: Colors.blueGrey,
             borderRadius:
@@ -208,7 +208,7 @@ class _ChatScreenState extends State<ChatScreen> {
               PopupMenuButton(
                   icon: Icon(Icons.more_vert),
                   onSelected: (int item) {
-                    Navigator.pushNamed(context, RamalScren.id);
+
                   },
                   color: Colors.white,
                   itemBuilder: (context) => [

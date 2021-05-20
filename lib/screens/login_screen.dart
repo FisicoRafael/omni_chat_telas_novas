@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'chats_recebidos_screen.dart';
-
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
   @override
   _LoginScreenState createState() => _LoginScreenState();
-
-  static const String id = 'login_screen';
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -17,11 +14,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Padding(
         padding: const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               border: Border(bottom: BorderSide(width: 2, color: Colors.grey))),
           child: TextField(
             obscureText: esconderTexto,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
             keyboardType: tipoTexto,
             decoration: InputDecoration(
               prefixIcon: Icon(
@@ -29,21 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.grey,
               ),
               hintText: labelHint,
-              hintStyle: TextStyle(fontSize: 20.0, color: Colors.grey),
-              //   contentPadding:
-              //       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              //   border: OutlineInputBorder(borderSide: BorderSide()),
-              //   //borderRadius: BorderRadius.all(Radius.circular(32.0)),
-              //
-              //   enabledBorder: OutlineInputBorder(
-              //     borderSide: BorderSide(color: Colors.white, width: 1.0),
-              //     //borderRadius: BorderRadius.all(Radius.circular(32.0)),
-              //   ),
-              //   focusedBorder: OutlineInputBorder(
-              //     borderSide: BorderSide(color: Colors.white, width: 2.0),
-              //     // borderRadius: BorderRadius.all(Radius.circular(32.0)),
-              //   ),
-              // )
+              hintStyle: const TextStyle(fontSize: 20.0, color: Colors.grey),
             ),
           ),
         ));
@@ -64,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.white,
                 image: DecorationImage(
                     image: AssetImage(
-                      'images/logo_fundo.png',
+                      'assets/images/logo_fundo.png',
                     ),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
@@ -81,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     Container(
                       height: constraints.maxHeight * 0.1,
-                      child: Image.asset('images/logo-lhtec.png'),
+                      child: Image.asset('assets/images/logo-lhtec.png'),
                     ),
                     Container(
                       height: constraints.maxHeight * 0.1,
@@ -99,9 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 70, right: 70),
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, ChatsRecebidosScreen.id);
-                        },
+                        onPressed: () {},
                         child: Text(
                           "Log In",
                           style: TextStyle(fontSize: 24),
