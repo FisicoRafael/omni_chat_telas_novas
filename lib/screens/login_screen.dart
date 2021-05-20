@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:omni_chat_telas_novas/constants_textos.dart';
+
+import '../constants_cores.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -8,25 +11,24 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Widget _campoTexto(
-      String labelHint, IconData icone, TextInputType tipoTexto) {
-    bool esconderTexto = (labelHint == 'Enter your password.' ? true : false);
+      String labelHint, IconData icone, TextInputType tipoTexto, bool esconderTexto) {
 
     return Padding(
         padding: const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
         child: Container(
           decoration: const BoxDecoration(
-              border: Border(bottom: BorderSide(width: 2, color: Colors.grey))),
+              border: Border(bottom: BorderSide(width: 2, color: corCinza))),
           child: TextField(
             obscureText: esconderTexto,
-            style: const TextStyle(color: Colors.black),
+            style: const TextStyle(color: corPreto),
             keyboardType: tipoTexto,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 icone,
-                color: Colors.grey,
+                color: corCinza,
               ),
               hintText: labelHint,
-              hintStyle: const TextStyle(fontSize: 20.0, color: Colors.grey),
+              hintStyle: const TextStyle(fontSize: 20.0, color: corCinza),
             ),
           ),
         ));
@@ -38,22 +40,23 @@ class _LoginScreenState extends State<LoginScreen> {
     double largura = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: corBranca,
       body: Stack(
         children: [
           Container(
             height: altura,
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: corBranca,
                 image: DecorationImage(
-                    image: AssetImage(
+                    image: const AssetImage(
                       'assets/images/logo_fundo.png',
                     ),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.3), BlendMode.dstATop))),
+                        corBranca.withOpacity(0.3), BlendMode.dstATop))),
           ),
           SingleChildScrollView(
+            // ignore: sized_box_for_whitespace
             child: Container(
               height: altura,
               width: largura,
@@ -62,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    // ignore: sized_box_for_whitespace
                     Container(
                       height: constraints.maxHeight * 0.1,
                       child: Image.asset('assets/images/logo-lhtec.png'),
@@ -69,13 +73,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       height: constraints.maxHeight * 0.1,
                     ),
-                    _campoTexto('Enter yoir email', Icons.person,
-                        TextInputType.emailAddress),
+                    _campoTexto(StringsDoApp.textosEN["LoginEmail"], Icons.person,
+                        TextInputType.emailAddress, false),
                     Container(
                       height: constraints.maxHeight * 0.03,
                     ),
                     _campoTexto(
-                        'Enter your password.', Icons.lock, TextInputType.text),
+                        StringsDoApp.textosEN["LoginSenha"], Icons.lock, TextInputType.text, true),
                     Container(
                       height: constraints.maxHeight * 0.03,
                     ),
@@ -84,11 +88,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text(
-                          "Log In",
-                          style: TextStyle(fontSize: 24),
+                          StringsDoApp.textosEN["LoginButton"],
+                          style: const TextStyle(fontSize: 24),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[700],
+                            primary: corCinza700,
                             minimumSize: Size(constraints.maxWidth * 0.6,
                                 constraints.maxHeight * 0.07)),
                       ),
