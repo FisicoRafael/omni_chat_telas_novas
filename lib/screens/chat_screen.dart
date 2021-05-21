@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:omni_chat_telas_novas/components/botoes_baixo.dart';
 import 'package:omni_chat_telas_novas/components/foto_usuario.dart';
+import 'package:omni_chat_telas_novas/components/menu_customizado.dart';
 import 'package:omni_chat_telas_novas/components/my_app_bar_custom.dart';
 import 'package:omni_chat_telas_novas/components/balaozinhos.dart';
 import 'package:omni_chat_telas_novas/components/conversasChat.dart';
+import 'package:omni_chat_telas_novas/constants_cores.dart';
+import 'package:omni_chat_telas_novas/helper/estados.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
-
-  static const String id = 'chat_screen';
 }
 
 double larguraTelaGlobal = 0.0;
 double alturaTelaGlobal = 0.0;
 
 class _ChatScreenState extends State<ChatScreen> {
+  List<String> listaMenu = [
+    "Almoço",
+    "Back Office",
+    "Banheiro",
+    "Café",
+    "Demostração",
+    "Particular"
+  ];
+
   @override
   Widget build(BuildContext context) {
     double alturaAppStatus = MediaQuery.of(context).padding.top;
@@ -24,96 +34,42 @@ class _ChatScreenState extends State<ChatScreen> {
     double alturaAppBar = alturaAppStatus + (0.13 * alturaTela);
 
     var appBar = MyAppBarCuston(
-        tipo: false,
-        alturaTela: alturaTela,
-        alturaAppBar: alturaAppBar,
-        alturaAppStatus: alturaAppStatus, listaMenu: [],);
+      tipo: false,
+      alturaTela: alturaTela,
+      alturaAppBar: alturaAppBar,
+      alturaAppStatus: alturaAppStatus,
+      listaMenu: listaMenu,
+    );
 
     double alturaTelaDisponivel = alturaTela - appBar.alturaAppBar;
 
-    //  print(alturaTelaDisponivel);
-
-    return Scaffold(
-
-      body: Container(
-        height: alturaTelaDisponivel,
-        width: larguraTela,
-        color: Color(0xffbdbdbd),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              _caixaUsuario(),
-              Expanded(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('images/bg_chat.png'),
-                              fit: BoxFit.cover)),
-                    ),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: mensagens.length,
-                        itemBuilder: _chatPersonalisado),
+    return AnimatedBuilder(
+        animation: EstadoMenuAtendimento.instance,
+        builder: (context, child) {
+          return Material(
+            color: corBranca,
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    MyAppBarCuston(
+                        tipo: true,
+                        alturaTela: alturaTela,
+                        alturaAppBar: alturaAppBar,
+                        alturaAppStatus: alturaAppStatus,
+                        listaMenu: listaMenu),
                   ],
                 ),
-              ),
-              Container(
-                  color: Colors.white,
-                  height: constraints.maxHeight * 0.1,
-                  child: Row(children: <Widget>[
-                    Expanded(
-                        child: Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: TextField(
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.grey[400]),
-                            hintText: "Escreva uma mensagem",
-                          )),
-                    )),
-                    IconButton(
-                      icon: const Icon(Icons.tag_faces, color: Colors.orange),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.attach_file, color: Colors.orange),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.subdirectory_arrow_left_rounded,
-                          color: Colors.orange),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.mic, color: Colors.orange),
-                      onPressed: () {},
-                    ),
-                  ])),
-              Container(
-                color: Colors.blueGrey,
-                height: constraints.maxHeight * 0.07,
-                child: Row(
-                  children: <Widget>[
-                    ItemBotaoBaixo(alturaTela, Colors.white, Icons.group_add),
-                    ItemBotaoBaixo(alturaTela, Colors.white, Icons.people),
-                    const Expanded(
-                        child: SizedBox(
-                      width: 50,
-                    )),
-                    ItemBotaoBaixo(alturaTela, Colors.white, Icons.call),
-                    ItemBotaoBaixo(alturaTela, Colors.white, Icons.pause),
-                  ],
-                ),
-              )
-            ],
+                EstadoMenuAtendimento.instance.showMenu
+                    ? Positioned(
+                        right: larguraTela * 0.07,
+                        top: alturaAppBar * 0.9,
+                        child: MenuCustom(listaMenu: listaMenu))
+                    : Container()
+              ],
+            ),
           );
-        }),
-      ),
-    );
+        });
   }
 
   List<Chatmessage> mensagens = [
@@ -179,7 +135,6 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Expanded(
           child: Row(
             children: <Widget>[
-
               Padding(
                 padding: const EdgeInsets.only(top: 10, left: 10),
                 child: Column(

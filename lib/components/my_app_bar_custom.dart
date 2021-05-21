@@ -22,6 +22,14 @@ class MyAppBarCuston extends StatefulWidget {
   final double alturaAppStatus;
   final List<String> listaMenu;
 
+  Icon iconeRetornado() {
+    if (tipo) {
+      return Icon(Icons.group_add);
+    } else {
+      return Icon(Icons.notifications);
+    }
+  }
+
   @override
   State<MyAppBarCuston> createState() => _MyAppBarCustonState();
 }
@@ -74,8 +82,8 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
                   ),
                 ),
                 Expanded(child: SizedBox()),
-                EstadoMenuAtendimento.instance.exitNotificacao
-                    ? Icon(Icons.notifications)
+                EstadoMenuAtendimento.instance.exitNotificacao || widget.tipo
+                    ? widget.iconeRetornado()
                     : Container(),
                 IconButton(
                     onPressed: () {
