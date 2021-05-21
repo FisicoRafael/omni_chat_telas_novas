@@ -55,7 +55,7 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
               children: [
                 FotoUsuario(
                   icone: Icons.person,
-                  alturaAppBar: widget.alturaAppBar * 0.45,
+                  alturaAppBar: widget.alturaAppBar * 0.40,
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 10),
