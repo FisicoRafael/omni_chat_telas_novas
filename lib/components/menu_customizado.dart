@@ -13,26 +13,24 @@ class MenuCustom extends StatefulWidget {
 
 class _MenuCustomState extends State<MenuCustom>
     with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<double> animation;
   late List<String> listaMenuCon;
 
   @override
   void initState() {
     super.initState();
     listaMenuCon = widget.listaMenu;
-    controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
+    /* controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 50));
     animation = Tween<double>(begin: 0, end: 150).animate(controller);
     animation.addListener(() {
       setState(() {});
     });
-    controller.forward();
+    controller.forward();*/
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    /*controller.dispose();*/
     super.dispose();
   }
 
@@ -40,8 +38,7 @@ class _MenuCustomState extends State<MenuCustom>
   Widget build(BuildContext context) {
     return Material(
         child: Container(
-      width: animation.value,
-      height: animation.value,
+      width: 150,
       decoration: BoxDecoration(
           color: corBranca,
           borderRadius: BorderRadius.only(
@@ -51,28 +48,54 @@ class _MenuCustomState extends State<MenuCustom>
           ),
           boxShadow: <BoxShadow>[BoxShadow(color: corPreto, spreadRadius: 1)]),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            decoration: BoxDecoration(
+                color: corBlueGrey,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                )),
             height: 30,
-            child: Text("Solicitar pausa para:"),
+            width: 150,
+            child: Center(
+              child: Text(
+                "Solicitar pausa para:",
+                style: TextStyle(color: corBranca),
+              ),
+            ),
           ),
-          Container(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: listaMenuCon.length,
-                itemBuilder: buildItem),
-          )
+          buildItem(0),
+          buildItem(1),
+          buildItem(2),
+          buildItem(3),
+          buildItem(4),
+          buildItem(5),
         ],
       ),
     ));
   }
 
-  Widget buildItem(context, index) {
-    return Container(
-      height: 30,
-      child: ListTile(
-        title: Text(listaMenuCon[index]),
+  Widget buildItem(int index) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(
+        listaMenuCon[index],
+        style: TextStyle(color: corPreto),
       ),
     );
   }
 }
+
+/*ElevatedButton(
+      onPressed: () {  },
+      child: Container(
+        alignment: Alignment.centerLeft,
+          height: 20,
+          width: 150,
+          padding: const EdgeInsets.only(left: 15),
+          decoration:
+              BoxDecoration(border: Border(bottom: BorderSide(color: corCinza))),
+          child: Text(listaMenuCon[index])),
+    );*/

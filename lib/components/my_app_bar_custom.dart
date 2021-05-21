@@ -49,6 +49,7 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
             height: alturaImagem,
           ),
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
             height: alturaRow,
             child: Row(
               children: [
@@ -56,25 +57,36 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
                   icone: Icons.person,
                   alturaAppBar: widget.alturaAppBar * 0.45,
                 ),
-                Column(
-                  children: [
-                    Text(
-                      "Nome do usuario",
-                      style: const TextStyle(color: corPreto),
-                    ),
-                    Text(
-                      "00:00:00",
-                      style: const TextStyle(color: corPreto),
-                    )
-                  ],
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: [
+                      Text(
+                        "Nome do usuario",
+                        style: const TextStyle(color: corPreto),
+                      ),
+                      Text(
+                        "00:00:00",
+                        style: const TextStyle(color: corPreto),
+                      )
+                    ],
+                  ),
                 ),
                 Expanded(child: SizedBox()),
                 Icon(Icons.notification_important),
                 IconButton(
                     onPressed: () {
-                      EstadoMenuAtendimento.instance.openMenu();
+                      setState(() {
+                        EstadoMenuAtendimento.instance.openMenu();
+                      });
                     },
-                    icon: Icon(Icons.pause_circle_filled))
+                    icon: Icon(
+                      Icons.pause_circle_filled,
+                      color: EstadoMenuAtendimento.instance.showMenu
+                          ? corBlueGrey
+                          : corPreto,
+                    ))
               ],
             ),
           )

@@ -23,7 +23,7 @@ class _EmAtendimentoState extends State<EmAtendimento> {
     double larguraTela = MediaQuery.of(context).size.width;
     double alturaAppBar = alturaAppStatus + (0.13 * alturaTela);
 
-    List<String> listaMenu = ["Almoço", "Back Office"];
+    List<String> listaMenu = ["Almoço", "Back Office","Banheiro","Café","Demostração","Particular"];
 
     double alturaTelaDisponivel = alturaTela;
     print(EstadoMenuAtendimento.instance.showMenu);
