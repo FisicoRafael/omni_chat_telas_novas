@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omni_chat_telas_novas/screens/em_atendimento.dart';
 import 'package:omni_chat_telas_novas/screens/login_screen.dart';
 
 void main() {
@@ -6,12 +7,14 @@ void main() {
 }
 
 class OmniChat extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const OmniChat({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginScreen(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: EmAtendimento()
     );
   }
 }

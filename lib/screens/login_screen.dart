@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:omni_chat_telas_novas/constants_textos.dart';
+import 'package:omni_chat_telas_novas/screens/em_atendimento.dart';
 
 import '../constants_cores.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Widget _campoTexto(
-      String labelHint, IconData icone, TextInputType tipoTexto, bool esconderTexto) {
-
+  Widget _campoTexto(String labelHint, IconData icone, TextInputType tipoTexto,
+      bool esconderTexto) {
     return Padding(
         padding: const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
         child: Container(
@@ -73,20 +74,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       height: constraints.maxHeight * 0.1,
                     ),
-                    _campoTexto(StringsDoApp.textosEN["LoginEmail"], Icons.person,
-                        TextInputType.emailAddress, false),
+                    _campoTexto(StringsDoApp.textosEN["LoginEmail"],
+                        Icons.person, TextInputType.emailAddress, false),
                     Container(
                       height: constraints.maxHeight * 0.03,
                     ),
-                    _campoTexto(
-                        StringsDoApp.textosEN["LoginSenha"], Icons.lock, TextInputType.text, true),
+                    _campoTexto(StringsDoApp.textosEN["LoginSenha"], Icons.lock,
+                        TextInputType.text, true),
                     Container(
                       height: constraints.maxHeight * 0.03,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 70, right: 70),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EmAtendimento()));
+                        },
                         child: Text(
                           StringsDoApp.textosEN["LoginButton"],
                           style: const TextStyle(fontSize: 24),

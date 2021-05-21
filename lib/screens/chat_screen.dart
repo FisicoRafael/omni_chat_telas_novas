@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:omni_chat_telas_novas/components/BotoesBaixo.dart';
-import 'package:omni_chat_telas_novas/components/FotoUsuario.dart';
-import 'package:omni_chat_telas_novas/components/MyAppBarCustom.dart';
+import 'package:omni_chat_telas_novas/components/botoes_baixo.dart';
+import 'package:omni_chat_telas_novas/components/foto_usuario.dart';
+import 'package:omni_chat_telas_novas/components/my_app_bar_custom.dart';
 import 'package:omni_chat_telas_novas/components/balaozinhos.dart';
 import 'package:omni_chat_telas_novas/components/conversasChat.dart';
-
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -24,18 +23,22 @@ class _ChatScreenState extends State<ChatScreen> {
     double larguraTela = MediaQuery.of(context).size.width;
     double alturaAppBar = alturaAppStatus + (0.13 * alturaTela);
 
-    var appBar =
-        MyAppBarCuston("chat", alturaTela, alturaAppStatus, alturaAppBar);
+    var appBar = MyAppBarCuston(
+        tipo: false,
+        alturaTela: alturaTela,
+        alturaAppBar: alturaAppBar,
+        alturaAppStatus: alturaAppStatus, listaMenu: [],);
+
     double alturaTelaDisponivel = alturaTela - appBar.alturaAppBar;
 
     //  print(alturaTelaDisponivel);
 
     return Scaffold(
-      appBar: appBar,
+
       body: Container(
         height: alturaTelaDisponivel,
         width: larguraTela,
-        color: Color(0xFFbdbdbd),
+        color: Color(0xffbdbdbd),
         child: LayoutBuilder(builder: (context, constraints) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -176,10 +179,7 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Expanded(
           child: Row(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: FotoUsuario(Icons.person),
-              ),
+
               Padding(
                 padding: const EdgeInsets.only(top: 10, left: 10),
                 child: Column(
@@ -207,9 +207,7 @@ class _ChatScreenState extends State<ChatScreen> {
               Expanded(child: SizedBox()),
               PopupMenuButton(
                   icon: Icon(Icons.more_vert),
-                  onSelected: (int item) {
-
-                  },
+                  onSelected: (int item) {},
                   color: Colors.white,
                   itemBuilder: (context) => [
                         PopupMenuItem(
