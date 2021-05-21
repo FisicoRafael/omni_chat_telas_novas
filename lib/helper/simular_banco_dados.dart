@@ -16,7 +16,7 @@ class BancoDadosSimulado{
       "lida":true,
       "tipoConatto":"whatts",
       "horario":"12:20:00",
-      "QtMensagens":0
+      "QtMensagens":2
     },
     2:{
       "titulo":"Nome do Contato",
@@ -24,7 +24,7 @@ class BancoDadosSimulado{
       "lida":true,
       "tipoConatto":"whatts",
       "horario":"12:20:00",
-      "QtMensagens":2
+      "QtMensagens":0
     },
     3:{
       "titulo":"Nome do Contato",

@@ -74,7 +74,9 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
                   ),
                 ),
                 Expanded(child: SizedBox()),
-                Icon(Icons.notification_important),
+                EstadoMenuAtendimento.instance.exitNotificacao
+                    ? Icon(Icons.notifications)
+                    : Container(),
                 IconButton(
                     onPressed: () {
                       setState(() {
