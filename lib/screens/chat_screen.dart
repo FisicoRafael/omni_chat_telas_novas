@@ -124,10 +124,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     borderRadius:
                                                         BorderRadius.all(
                                                             Radius.circular(
-                                                                15))),
+                                                                40))),
                                                 child: IconButton(
                                                   icon:
-                                                      Icon(Icons.arrow_forward),
+                                                      Icon(Icons.send, color: Colors.orange,),
                                                   onPressed: () {},
                                                 ),
                                                 margin:
