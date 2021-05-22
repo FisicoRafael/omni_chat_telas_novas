@@ -15,6 +15,7 @@ class ChatScreen extends StatefulWidget {
 
 double larguraTelaGlobal = 0.0;
 double alturaTelaGlobal = 0.0;
+double alturaAppBarGlobal = 0.0;
 
 class _ChatScreenState extends State<ChatScreen> {
   List<String> listaMenu = [
@@ -32,6 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
     double alturaTela = MediaQuery.of(context).size.height;
     double larguraTela = MediaQuery.of(context).size.width;
     double alturaAppBar = alturaAppStatus + (0.13 * alturaTela);
+
+    alturaAppBarGlobal = alturaAppBar;
 
     var appBar = MyAppBarCuston(
       tipo: false,
@@ -85,25 +88,53 @@ class _ChatScreenState extends State<ChatScreen> {
                                               itemCount: mensagens.length,
                                               itemBuilder: _chatPersonalisado),
                                         ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: constraints.maxWidth * 0.5,
-                                              child: TextField(
-                                                  style: TextStyle(
-                                                      color: Colors.black),
-                                                  decoration: InputDecoration(
-                                                    hintStyle: TextStyle(
-                                                        color:
-                                                            Colors.grey[400]),
-                                                    hintText:
-                                                        "Escreva uma mensagem",
-                                                  )),
-                                            ),
-                                            Container(
-                                                child:
-                                                    Icon(Icons.arrow_forward))
-                                          ],
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 8),
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: corBranca,
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  20))),
+                                                  margin: EdgeInsets.only(
+                                                      left: 8, right: 8),
+                                                  width: constraints.maxWidth *
+                                                      0.5,
+                                                  child: TextField(
+                                                      style: TextStyle(
+                                                          color: Colors.black),
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintStyle: TextStyle(
+                                                            color: Colors
+                                                                .grey[400]),
+                                                        hintText:
+                                                            "Escreva uma mensagem",
+                                                      )),
+                                                ),
+                                              ),
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: corBranca,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                15))),
+                                                child: IconButton(
+                                                  icon:
+                                                      Icon(Icons.arrow_forward),
+                                                  onPressed: () {},
+                                                ),
+                                                margin:
+                                                    EdgeInsets.only(right: 8),
+                                              )
+                                            ],
+                                          ),
                                         )
                                       ],
                                     )
@@ -124,7 +155,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                       width: 50,
                                     )),
                                     PopupMenuButton(
-                                        icon: Icon(Icons.more_vert),
+                                        icon: Icon(
+                                          Icons.more_vert,
+                                          color: corBranca,
+                                        ),
                                         onSelected: (int item) {},
                                         color: Colors.white,
                                         itemBuilder: (context) => [
@@ -306,6 +340,10 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
         ),
+        leading: FotoUsuario(
+          icone: Icons.person,
+          alturaAppBar: alturaAppBarGlobal * 0.3,
+        ),
       );
     } else {
       return ListTile(
@@ -321,10 +359,14 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Text(
                 mensagens[index].messageContent,
                 softWrap: true,
-                style: const TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.black),
               ),
             ),
           ),
+        ),
+        trailing: FotoUsuario(
+          icone: Icons.person,
+          alturaAppBar: alturaAppBarGlobal * 0.3,
         ),
       );
     }
@@ -341,27 +383,38 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Expanded(
           child: Row(
             children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 8),
+                padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: Colors.orange),
+                  child: Icon(
+                    Icons.add_ic_call_outlined,
+                    color: corBranca,
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 10, left: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Atendimento na Fila: nome da Fila"),
+                    Text("Atendimento na Fila: nome da Fila",
+                        style: TextStyle(color: corBranca)),
                     Row(
                       children: [
                         Text(
                           "Nome do Contato ",
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
+                          style: TextStyle(fontSize: 18, color: corBranca),
                         ),
                         Text(
                           " está digitando...",
+                          style: TextStyle(color: corBranca),
                         ),
                       ],
                     ),
-                    Text('Ticket: #09080787')
+                    Text('Ticket: #09080787',
+                        style: TextStyle(color: corBranca)),
                   ],
                 ),
               ),
