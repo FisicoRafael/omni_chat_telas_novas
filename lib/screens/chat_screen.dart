@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:omni_chat_telas_novas/components/botoes_baixo.dart';
+import 'package:omni_chat_telas_novas/components/caixa_de_usuario.dart';
 import 'package:omni_chat_telas_novas/components/foto_usuario.dart';
 import 'package:omni_chat_telas_novas/components/menu_customizado.dart';
 import 'package:omni_chat_telas_novas/components/my_app_bar_custom.dart';
@@ -36,15 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     alturaAppBarGlobal = alturaAppBar;
 
-    var appBar = MyAppBarCuston(
-      tipo: false,
-      alturaTela: alturaTela,
-      alturaAppBar: alturaAppBar,
-      alturaAppStatus: alturaAppStatus,
-      listaMenu: listaMenu,
-    );
-
-    double alturaTelaDisponivel = alturaTela - appBar.alturaAppBar;
+    double alturaTelaDisponivel = alturaTela - alturaAppBar;
 
     return AnimatedBuilder(
         animation: EstadoMenuAtendimento.instance,
@@ -69,7 +62,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             (BuildContext context, BoxConstraints constraints) {
                           return Column(
                             children: [
-                              _caixaUsuario(),
+                              CaixaUsuario().caixaUsuario(),
                               Expanded(
                                 child: Stack(
                                   children: [
@@ -126,8 +119,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                                             Radius.circular(
                                                                 40))),
                                                 child: IconButton(
-                                                  icon:
-                                                      Icon(Icons.send, color: Colors.orange,),
+                                                  icon: Icon(
+                                                    Icons.send,
+                                                    color: Colors.orange,
+                                                  ),
                                                   onPressed: () {},
                                                 ),
                                                 margin:
@@ -370,59 +365,5 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       );
     }
-  }
-
-  Widget _caixaUsuario() {
-    return ClipRRect(
-      child: Container(
-        padding: const EdgeInsets.only(bottom: 8),
-        decoration: BoxDecoration(
-            color: Colors.blueGrey,
-            borderRadius:
-                BorderRadius.only(topRight: const Radius.circular(40))),
-        child: Expanded(
-          child: Row(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
-                padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: Colors.orange),
-                  child: Icon(
-                    Icons.add_ic_call_outlined,
-                    color: corBranca,
-                  )),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text("Atendimento na Fila: nome da Fila",
-                        style: TextStyle(color: corBranca)),
-                    Row(
-                      children: [
-                        Text(
-                          "Nome do Contato ",
-                          style: TextStyle(fontSize: 18, color: corBranca),
-                        ),
-                        Text(
-                          " está digitando...",
-                          style: TextStyle(color: corBranca),
-                        ),
-                      ],
-                    ),
-                    Text('Ticket: #09080787',
-                        style: TextStyle(color: corBranca)),
-                  ],
-                ),
-              ),
-              Expanded(child: SizedBox()),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

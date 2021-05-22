@@ -56,7 +56,7 @@ class _EmAtendimentoState extends State<EmAtendimento> {
     print(EstadoMenuAtendimento.instance.qtNotificacoes);
     print(EstadoMenuAtendimento.instance.exitNotificacao);
 
-    double alturaAppBar = alturaAppStatus + (0.13 * alturaTela);
+    double alturaAppBar = (0.13 * alturaTela)+alturaAppStatus;
 
     double alturaTelaDisponivel = alturaTela - alturaAppBar;
 
@@ -73,7 +73,6 @@ class _EmAtendimentoState extends State<EmAtendimento> {
                         tipo: false,
                         alturaTela: alturaTela,
                         alturaAppBar: alturaAppBar,
-                        alturaAppStatus: alturaAppStatus,
                         listaMenu: listaMenu),
                     Container(
                       width: larguraTela,

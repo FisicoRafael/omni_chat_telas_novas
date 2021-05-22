@@ -9,17 +9,17 @@ import 'foto_usuario.dart';
 class MyAppBarCuston extends StatefulWidget {
   MyAppBarCuston(
       {Key? key,
+      double? alturaAppStatus,
       required this.tipo,
       required this.alturaTela,
       required this.alturaAppBar,
-      required this.alturaAppStatus,
       required this.listaMenu})
       : super(key: key);
 
   final bool tipo;
   final double alturaTela;
   final double alturaAppBar;
-  final double alturaAppStatus;
+
   final List<String> listaMenu;
 
   Icon iconeRetornado() {
@@ -42,6 +42,7 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
     double larguraTela = MediaQuery.of(context).size.width;
     double alturaImagem = widget.alturaAppBar * 0.3;
     double alturaRow = widget.alturaAppBar * 0.43;
+    double alturaAppStatus = MediaQuery.of(context).padding.top;
 
     return Container(
       height: widget.alturaAppBar,
@@ -50,7 +51,7 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
       child: Column(
         children: [
           SizedBox(
-            height: widget.alturaAppStatus,
+            height: alturaAppStatus,
           ),
           Image(
             image: imagem,
