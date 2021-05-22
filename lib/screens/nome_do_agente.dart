@@ -29,10 +29,7 @@ class _CadastroAgenteState extends State<CadastroAgente> {
 
   @override
   Widget build(BuildContext context) {
-     double alturaAppStatus = MediaQuery
-        .of(context)
-        .padding
-        .top;
+    double alturaAppStatus = MediaQuery.of(context).padding.top;
     double alturaTela = MediaQuery.of(context).size.height;
     double larguraTela = MediaQuery.of(context).size.width;
     double alturaAppBar = (0.13 * alturaTela) + alturaAppStatus;
@@ -59,36 +56,55 @@ class _CadastroAgenteState extends State<CadastroAgente> {
                       width: larguraTela,
                       height: alturaTelaDisponivel,
                       child: LayoutBuilder(
-                        builder: (BuildContext context,
-                            BoxConstraints constraints) {
+                        builder:
+                            (BuildContext context, BoxConstraints constraints) {
                           return Column(
                             children: [
                               CaixaUsuario().caixaUsuario(),
-                              Stack(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/bg_chat.png'),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: constraints.maxHeight * 0.1,
-                                      ),
-                                      Container(
-                                        height: constraints.maxHeight*0.8,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(15),
-                                                topLeft:
-                                                    Radius.circular(15))),
-                                      )
-                                    ],
-                                  ),
-                                ],
+                              Expanded(
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/bg_chat.png'),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Container(
+                                          //color: Colors.red,
+                                          height: constraints.maxHeight * 0.08,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            
+                                            decoration: BoxDecoration(
+                                                color: corBranca,
+                                                borderRadius: BorderRadius.only(
+                                                    topRight: Radius.circular(15),
+                                                    topLeft:
+                                                        Radius.circular(15))),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: (constraints.maxHeight * 0.02) /
+                                              2,
+                                          left: constraints.maxWidth * 0.05),
+                                      height: constraints.maxHeight * 0.15,
+                                      width: constraints.maxWidth * 0.89,
+                                      decoration: BoxDecoration(
+                                          color: corBlueGrey,
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(15),
+                                              topRight: Radius.circular(15))),
+                                    )
+                                  ],
+                                ),
                               )
                             ],
                           );
