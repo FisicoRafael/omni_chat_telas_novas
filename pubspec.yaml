@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/images/logo_fundo.png
     - assets/images/logo-lhtec.png
+    - assets/images/bg_chat.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

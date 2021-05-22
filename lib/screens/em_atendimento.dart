@@ -51,6 +51,7 @@ class _EmAtendimentoState extends State<EmAtendimento> {
     double larguraTela = MediaQuery.of(context).size.width;
     alturaGlobal = alturaTela;
     larguraGlobal = larguraTela;
+    EstadoMenuAtendimento.instance.qtNotificacoes = 0;
     contarMensagens();
     print(EstadoMenuAtendimento.instance.qtNotificacoes);
     print(EstadoMenuAtendimento.instance.exitNotificacao);
