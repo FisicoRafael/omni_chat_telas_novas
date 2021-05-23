@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:omni_chat_telas_novas/components/caixa_de_usuario.dart';
+import 'package:omni_chat_telas_novas/components/foto_usuario.dart';
 import 'package:omni_chat_telas_novas/components/menu_customizado.dart';
 import 'package:omni_chat_telas_novas/components/my_app_bar_custom.dart';
 import 'package:omni_chat_telas_novas/helper/estados.dart';
+import 'package:omni_chat_telas_novas/helper/simular_banco_dados.dart';
 
 import '../constants_cores.dart';
 
@@ -16,6 +18,8 @@ class CadastroAgente extends StatefulWidget {
 double larguraTelaGlobal = 0.0;
 double alturaTelaGlobal = 0.0;
 double alturaAppBarGlobal = 0.0;
+
+BancoDadosSimulado bancoDadosSimulado = BancoDadosSimulado();
 
 class _CadastroAgenteState extends State<CadastroAgente>
     with TickerProviderStateMixin {
@@ -43,6 +47,9 @@ class _CadastroAgenteState extends State<CadastroAgente>
     double larguraTela = MediaQuery.of(context).size.width;
     double alturaAppBar = (0.13 * alturaTela) + alturaAppStatus;
 
+    larguraTelaGlobal = larguraTela;
+    alturaTelaGlobal = alturaTela;
+
     alturaAppBarGlobal = alturaAppBar;
 
     double alturaTelaDisponivel = alturaTela - alturaAppBar;
@@ -57,7 +64,7 @@ class _CadastroAgenteState extends State<CadastroAgente>
                 Column(
                   children: [
                     MyAppBarCuston(
-                        tipo: false,
+                        tipo: true,
                         alturaTela: alturaTela,
                         alturaAppBar: alturaAppBar,
                         listaMenu: listaMenu),
@@ -101,42 +108,91 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                                   height:
                                                       constraints.maxHeight *
                                                           0.08,
-                                                  color: Colors.red,
+                                                  //color: Colors.red,
                                                 ),
-                                                TabBar(
-                                                    unselectedLabelColor: corCinza,
-                                                    controller: _tabController,
-                                                    indicator: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        20)),
-                                                        color: corBlueGrey),
-                                                    labelColor: Colors.white,
-                                                    tabs: [
-                                                      Tab(
-                                                        child: Row(
-                                                          mainAxisSize: MainAxisSize.min,
-                                                          children: [
-                                                            Icon(Icons.person),
-                                                            Text(("Para outro Agente"))
-                                                          ],
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.grey[350],
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                              topRight: Radius
+                                                                  .circular(20),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      20))),
+                                                  child: TabBar(
+                                                      unselectedLabelColor:
+                                                          corCinza,
+                                                      controller:
+                                                          _tabController,
+                                                      indicator: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          20),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          20)),
+                                                          color: corBlueGrey),
+                                                      labelColor: Colors.white,
+                                                      tabs: [
+                                                        Tab(
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              Icon(
+                                                                  Icons.person),
+                                                              Text(
+                                                                  ("Para outro Agente"))
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Tab(
-                                                        child: Row(
-                                                          mainAxisSize: MainAxisSize.min,
-                                                          children: [
-                                                            Icon(Icons.account_tree_rounded),
-                                                            Text(("Para uma Fila"))
-                                                          ],
+                                                        Tab(
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              Icon(Icons
+                                                                  .account_tree_rounded),
+                                                              Text(
+                                                                  ("Para uma Fila"))
+                                                            ],
+                                                          ),
                                                         ),
+                                                      ]),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10),
+                                                  child: TextField(
+                                                    style: TextStyle(
+                                                        color: corPreto),
+                                                    decoration: InputDecoration(
+                                                      fillColor: corBranca,
+                                                      hintText:
+                                                          "Buscar Atendimento",
+                                                      hintStyle: TextStyle(
+                                                          color: corCinza),
+                                                      suffixIcon: Icon(
+                                                        Icons.search,
+                                                        color: corCinza,
                                                       ),
-                                                    ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                    child: ListView.builder(
+                                                        shrinkWrap: true,
+                                                        itemCount:
+                                                            bancoDadosSimulado
+                                                                .bancoLista
+                                                                .length,
+                                                        itemBuilder: builItem))
                                               ],
                                             ),
                                           ),
@@ -196,5 +252,21 @@ class _CadastroAgenteState extends State<CadastroAgente>
             ),
           );
         });
+  }
+
+  Widget builItem(context, index) {
+    var valorBanco = bancoDadosSimulado.bancoLista[index];
+
+    return ListTile(
+      title: Text(
+        valorBanco["titulo"],
+        style: TextStyle(
+            color: corPreto, fontSize: 20, fontWeight: FontWeight.w500),
+      ),
+      leading: FotoUsuario(
+        alturaAppBar: alturaAppBarGlobal*0.3,
+        icone: Icons.person,
+      ),
+    );
   }
 }
