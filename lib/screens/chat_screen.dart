@@ -5,7 +5,7 @@ import 'package:omni_chat_telas_novas/components/foto_usuario.dart';
 import 'package:omni_chat_telas_novas/components/menu_customizado.dart';
 import 'package:omni_chat_telas_novas/components/my_app_bar_custom.dart';
 import 'package:omni_chat_telas_novas/components/balaozinhos.dart';
-import 'package:omni_chat_telas_novas/components/conversasChat.dart';
+import 'package:omni_chat_telas_novas/components/conversas_chat.dart';
 import 'package:omni_chat_telas_novas/constants_cores.dart';
 import 'package:omni_chat_telas_novas/helper/estados.dart';
 

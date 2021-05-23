@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'conversasChat.dart';
+import 'conversas_chat.dart';
 
 class ChatCustom extends StatefulWidget {
   @override
