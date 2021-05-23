@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omni_chat_telas_novas/screens/chat_screen.dart';
 import 'package:omni_chat_telas_novas/screens/em_atendimento.dart';
 import 'package:omni_chat_telas_novas/screens/login_screen.dart';
 import 'package:omni_chat_telas_novas/screens/nome_do_agente.dart';
@@ -15,7 +16,7 @@ class OmniChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CadastroAgente()
+      home: ChatScreen()
     );
   }
 }

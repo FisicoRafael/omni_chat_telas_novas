@@ -6,16 +6,14 @@ import '../constants_cores.dart';
 import 'foto_usuario.dart';
 
 class NomeDoAgente {
-
   BancoDadosSimulado bancoDadosSimulado = BancoDadosSimulado();
   double alturaAppBar = 0.0;
 
- Widget ListaNomeAgente(
+  Widget ListaNomeAgente(
       BoxConstraints constraints,
       TabController _tabController,
       BancoDadosSimulado bancoDadosSimulado,
       double alturaAppBar) {
-
     this.bancoDadosSimulado = bancoDadosSimulado;
     this.alturaAppBar = alturaAppBar;
 
@@ -81,6 +79,33 @@ class NomeDoAgente {
     );
   }
 
+  Widget cadastroNomeAgente(BoxConstraints constraints) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: constraints.maxHeight * 0.08,
+            //color: Colors.red,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Text(
+              "Conta:",
+              style: TextStyle(color: corCinza700),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            width: constraints.maxWidth,
+            child: TextField(),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget builItem(context, index) {
     var valorBanco = bancoDadosSimulado.bancoLista[index];
 
@@ -91,10 +116,9 @@ class NomeDoAgente {
             color: corPreto, fontSize: 20, fontWeight: FontWeight.w500),
       ),
       leading: FotoUsuario(
-        alturaAppBar: alturaAppBar*0.3,
+        alturaAppBar: alturaAppBar * 0.3,
         icone: Icons.person,
       ),
     );
   }
-
 }

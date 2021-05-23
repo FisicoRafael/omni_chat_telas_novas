@@ -8,8 +8,11 @@ import 'package:omni_chat_telas_novas/components/balaozinhos.dart';
 import 'package:omni_chat_telas_novas/components/conversas_chat.dart';
 import 'package:omni_chat_telas_novas/constants_cores.dart';
 import 'package:omni_chat_telas_novas/helper/estados.dart';
+import 'package:omni_chat_telas_novas/screens/nome_do_agente.dart';
 
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({Key? key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -154,7 +157,26 @@ class _ChatScreenState extends State<ChatScreen> {
                                           Icons.more_vert,
                                           color: corBranca,
                                         ),
-                                        onSelected: (int item) {},
+                                        onSelected: (int item) {
+                                          if (item == 3) {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CadastroAgente(
+                                                          screen: true,
+                                                        )));
+                                          }
+                                          if (item == 4) {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CadastroAgente(
+                                                          screen: false,
+                                                        )));
+                                          }
+                                        },
                                         color: Colors.white,
                                         itemBuilder: (context) => [
                                               PopupMenuItem(

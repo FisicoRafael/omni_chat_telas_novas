@@ -10,7 +10,9 @@ import 'package:omni_chat_telas_novas/helper/simular_banco_dados.dart';
 import '../constants_cores.dart';
 
 class CadastroAgente extends StatefulWidget {
-  const CadastroAgente({Key? key}) : super(key: key);
+  CadastroAgente({Key? key, required this.screen}) : super(key: key);
+
+  bool screen;
 
   @override
   _CadastroAgenteState createState() => _CadastroAgenteState();
@@ -53,6 +55,8 @@ class _CadastroAgenteState extends State<CadastroAgente>
     alturaTelaGlobal = alturaTela;
 
     alturaAppBarGlobal = alturaAppBar;
+
+    bool tela = widget.screen;
 
     double alturaTelaDisponivel = alturaTela - alturaAppBar;
 
@@ -105,12 +109,16 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                                     topLeft:
                                                         Radius.circular(15))),
                                             //Aqui
-                                            child: screenNomedoAgente
-                                                .ListaNomeAgente(
-                                                    constraints,
-                                                    _tabController,
-                                                    bancoDadosSimulado,
-                                                    alturaAppBar),
+                                            child: tela
+                                                ? screenNomedoAgente
+                                                    .ListaNomeAgente(
+                                                        constraints,
+                                                        _tabController,
+                                                        bancoDadosSimulado,
+                                                        alturaAppBar)
+                                                : screenNomedoAgente
+                                                    .cadastroNomeAgente(
+                                                        constraints),
                                           ),
                                         ),
                                       ],
@@ -132,14 +140,18 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Icon(
-                                            Icons.arrow_back,
+                                            tela
+                                                ? Icons.arrow_back
+                                                : Icons.flag,
                                             color: corBranca,
                                           ),
                                           Padding(
                                             padding:
                                                 const EdgeInsets.only(left: 8),
                                             child: Text(
-                                              "Transferir Atendimento",
+                                              tela
+                                                  ? "Transferir Atendimento"
+                                                  : "Lembrete de Retorno",
                                               style: TextStyle(
                                                   color: corBranca,
                                                   fontSize: 20),
