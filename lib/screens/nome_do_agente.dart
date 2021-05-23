@@ -118,7 +118,7 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                                         alturaAppBar)
                                                 : screenNomedoAgente
                                                     .cadastroNomeAgente(
-                                                        constraints),
+                                                        constraints, context),
                                           ),
                                         ),
                                       ],

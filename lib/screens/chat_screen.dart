@@ -144,10 +144,15 @@ class _ChatScreenState extends State<ChatScreen> {
                                 height: constraints.maxHeight * 0.07,
                                 child: Row(
                                   children: <Widget>[
-                                    ItemBotaoBaixo(alturaTela, corBranca,
-                                        Icons.attach_file),
-                                    ItemBotaoBaixo(alturaTela, corBranca,
-                                        Icons.subdirectory_arrow_left),
+                                    ItemBotaoBaixo(
+                                      cor: corBranca,
+                                      icone: Icons.attach_file,
+                                      alturaTela: alturaTela,
+                                    ),
+                                    ItemBotaoBaixo(
+                                        alturaTela: alturaTela,
+                                        cor: corBranca,
+                                        icone: Icons.subdirectory_arrow_left),
                                     Expanded(
                                         child: SizedBox(
                                       width: 50,

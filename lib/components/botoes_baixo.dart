@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:omni_chat_telas_novas/constants_cores.dart';
 
 class ItemBotaoBaixo extends StatelessWidget {
-  double alturaTela;
-  Color cor;
-  IconData icone;
+  double alturaTela = 0.0;
+  Color cor = corBranca;
+  IconData icone = Icons.person;
 
-  ItemBotaoBaixo(this.alturaTela, this.cor, this.icone);
+  ItemBotaoBaixo(
+      {String? texto,
+      required this.alturaTela,
+      required this.cor,
+      required this.icone});
 
   @override
   Widget build(BuildContext context) {
