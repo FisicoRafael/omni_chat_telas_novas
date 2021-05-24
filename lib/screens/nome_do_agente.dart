@@ -3,6 +3,7 @@ import 'package:omni_chat_telas_novas/components/caixa_de_usuario.dart';
 import 'package:omni_chat_telas_novas/components/foto_usuario.dart';
 import 'package:omni_chat_telas_novas/components/menu_customizado.dart';
 import 'package:omni_chat_telas_novas/components/my_app_bar_custom.dart';
+import 'package:omni_chat_telas_novas/components/nome_agente_cadastro.dart';
 import 'package:omni_chat_telas_novas/components/nome_agente_colunas.dart';
 import 'package:omni_chat_telas_novas/helper/estados.dart';
 import 'package:omni_chat_telas_novas/helper/simular_banco_dados.dart';
@@ -116,9 +117,8 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                                         _tabController,
                                                         bancoDadosSimulado,
                                                         alturaAppBar)
-                                                : screenNomedoAgente
-                                                    .cadastroNomeAgente(
-                                                        constraints, context),
+                                                : NomeAgenteCadastro(
+                                                    constraints: constraints),
                                           ),
                                         ),
                                       ],
