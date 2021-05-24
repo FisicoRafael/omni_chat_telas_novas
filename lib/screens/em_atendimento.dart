@@ -193,7 +193,7 @@ class _EmAtendimentoState extends State<EmAtendimento> {
                         borderRadius: BorderRadius.circular(5),
                         child: Container(
                           width: larguraGlobal * 0.035,
-                          height: alturaGlobal * 0.035,
+                          height: alturaGlobal * 0.03,
                           color: corBlueGrey,
                           child: Center(
                             child: Text(
