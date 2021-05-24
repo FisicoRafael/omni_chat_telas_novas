@@ -40,8 +40,8 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
   @override
   Widget build(BuildContext context) {
     double larguraTela = MediaQuery.of(context).size.width;
-    double alturaImagem = widget.alturaAppBar * 0.3;
-    double alturaRow = widget.alturaAppBar * 0.43;
+    double alturaImagem = widget.alturaAppBar * 0.25;
+    double alturaRow = widget.alturaAppBar * 0.4;
     double alturaAppStatus = MediaQuery.of(context).padding.top;
 
     return Container(
@@ -64,7 +64,7 @@ class _MyAppBarCustonState extends State<MyAppBarCuston> {
               children: [
                 FotoUsuario(
                   icone: Icons.person,
-                  alturaAppBar: widget.alturaAppBar * 0.35,
+                  alturaAppBar: widget.alturaAppBar * 0.25,
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 10),

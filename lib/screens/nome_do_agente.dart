@@ -97,8 +97,16 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                     Column(
                                       children: [
                                         Container(
+                                          alignment: Alignment.topLeft,
+                                          width: constraints.maxWidth,
                                           //color: Colors.red,
                                           height: constraints.maxHeight * 0.08,
+                                          child: IconButton(
+                                              icon: Icon(Icons.arrow_back,
+                                                  color: corBlueGrey),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              }),
                                         ),
                                         Expanded(
                                           child: Container(
@@ -128,9 +136,9 @@ class _CadastroAgenteState extends State<CadastroAgente>
                                       margin: EdgeInsets.only(
                                           top: (constraints.maxHeight * 0.02) /
                                               2,
-                                          left: constraints.maxWidth * 0.05),
+                                          left: constraints.maxWidth * 0.1),
                                       height: constraints.maxHeight * 0.12,
-                                      width: constraints.maxWidth * 0.89,
+                                      width: constraints.maxWidth * 0.8,
                                       decoration: BoxDecoration(
                                           color: corBlueGrey,
                                           borderRadius: BorderRadius.only(

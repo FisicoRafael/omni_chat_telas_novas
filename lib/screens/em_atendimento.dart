@@ -53,8 +53,7 @@ class _EmAtendimentoState extends State<EmAtendimento> {
     larguraGlobal = larguraTela;
     EstadoMenuAtendimento.instance.qtNotificacoes = 0;
     contarMensagens();
-    print(EstadoMenuAtendimento.instance.qtNotificacoes);
-    print(EstadoMenuAtendimento.instance.exitNotificacao);
+
 
     double alturaAppBar = (0.13 * alturaTela)+alturaAppStatus;
 
