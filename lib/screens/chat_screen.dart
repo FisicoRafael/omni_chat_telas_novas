@@ -362,7 +362,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
         ),
-        leading: FotoUsuario(
+        trailing: FotoUsuario(
           icone: Icons.person,
           alturaAppBar: alturaAppBarGlobal * 0.3,
         ),
